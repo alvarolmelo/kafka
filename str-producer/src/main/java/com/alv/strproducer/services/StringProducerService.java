@@ -17,14 +17,15 @@ public class StringProducerService {
 
     public void sendMessage(String message){
 
-        try{
-            SendResult<String,String> future = kafkaTemplate.send("str-topic",message).get();
+        //try{
+            //SendResult<String,String> future = kafkaTemplate.send("str-topic",message).get();
+            kafkaTemplate.send("str-topic", message);
             log.info("Send message with success {}", message);
-            log.info("Partition {}, Offset {}", 
-                    future.getRecordMetadata().partition(), 
-                    future.getRecordMetadata().offset() );
-        } catch (Exception e) {
-            log.error("Error send message");
-        }
+            //log.info("Partition {}, Offset {}", 
+            //        future.getRecordMetadata().partition(), 
+            //        future.getRecordMetadata().offset() );
+        //} catch (Exception e) {
+        //    log.error("Error send message");
+        //}
     }
 }
