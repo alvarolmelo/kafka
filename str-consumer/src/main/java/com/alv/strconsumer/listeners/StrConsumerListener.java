@@ -12,13 +12,15 @@ import lombok.extern.log4j.Log4j2;
 public class StrConsumerListener {
     
     @StrConsumerCustomListener(groupId = "group-1")
-    public void create(String message){
+    public void create(String message) {
         log.info("CREATE ::: Receive message {}", message);
+        throw new IllegalArgumentException("EXCEPTION...");
     }
 
     @StrConsumerCustomListener(groupId = "group-1")
     public void log(String message){
         log.info("LOG ::: Receive message {}", message);
+        throw new IllegalArgumentException("EXCEPTION 2 ...");
     }
 
     @KafkaListener(groupId = "group-2", topics = "str-topic" ,containerFactory = "validMessageContainerFactory")
