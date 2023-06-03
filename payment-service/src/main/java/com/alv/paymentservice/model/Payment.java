@@ -1,5 +1,7 @@
 package com.alv.paymentservice.model;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 
 @Getter
